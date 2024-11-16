@@ -1,0 +1,42 @@
+{% extends "navi_base.html" %}
+{% block title %}教科選択画面{% endblock %}
+
+{% block content %}
+<!-- https://uiverse.io/adamgiebl/new-bird-34 -->
+<br><h1 class="kokugo">国語</h1><br>
+<form action="{{ url_for('kanji') }}">
+    <button id="kanji" class="cssbuttons-io-button">
+        古文単語問題
+        <div class="icon">
+            <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                    fill="currentColor"></path>
+            </svg>
+        </div>
+    </button>
+</form>
+
+<br><h1 class="science">理科</h1><br>
+<button id="chemistry" class="cssbuttons-io-button">
+    化学
+    <div class="icon">
+        <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+                d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                fill="currentColor"></path>
+        </svg>
+    </div>
+</button>
+
+{% endblock %}

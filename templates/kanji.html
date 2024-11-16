@@ -1,0 +1,61 @@
+{% extends "navi_base.html" %}
+{% block title %}古文単語問題{% endblock %}
+
+{% block content %}
+<h2 class="text-center">現代語訳から古文単語</h2>
+<h1 class="text-center">第{{ question_num }}問</h1>
+<h2 class="text-center">問題: {{ question }}</h2>
+<h2 class="text-center">答え: {{ answer }}</h2>
+
+<br><br><br>
+
+<form method="POST">
+    {% if not answer_shown %}
+    <!-- 「答えを見る」ボタン -->
+    <div class="button-containter">
+        <button name="action" value="答えを見る" class="animated-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-2"
+                viewBox="0 0 24 24">
+                <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">答えを見る</span>
+            <span class="circle"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1"
+                viewBox="0 0 24 24">
+                <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+        </button></div>
+
+    <!-- <input type="submit" name="action" value="答えを見る"> -->
+    {% else %}
+    <!-- 正解・不正解の選択 -->
+    <h4 class="text-center">あなたの答えは正解でしたか？</h4><br><br>
+    <div class="body">
+        <div class="tabs">
+            <input
+                checked
+                id="correct"
+                type="radio"
+                name="answer_option"
+                value="correct"
+                class="input"
+                required>
+            <label for="correct" class="label">正解</label>
+            <input
+                id="incorrect"
+                type="radio"
+                name="answer_option"
+                class="input"
+                value="incorrect">
+            <label for="incorrect" class="label">不正解</label>
+        </div>
+    </div>
+
+    <br><br>
+    <!-- 「次へ」ボタン -->
+    <input class="next" type="submit" name="action" value="次へ">
+    {% endif %}
+</form>
+{% endblock %}

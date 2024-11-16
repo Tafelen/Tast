@@ -1,0 +1,25 @@
+{% extends "navi_base.html" %}
+{% block title %}質問AI{% endblock %}
+
+{% block content %}
+<div class="ai-contents">
+    <h1 class="title">質問AI</h1>
+    {% if question %}
+    <h3 class="title">質問：{{ question }}</h3>
+    <div class="ai-response">
+        <h3 class="title">回答：{{ response|safe }}</h3>
+    </div><br><br><br><br><br>
+    {% endif %}
+
+</div>
+
+<form action="/ask" method="POST">
+    <div class="input-container">
+        <label for="name" class="name">AIに質問</label>
+        <input name="user_question" placeholder="質問を入力してください…" type="text"
+            class="input">
+        <div class="underline"></div>
+    </div>
+</form>
+
+{% endblock %}

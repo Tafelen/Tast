@@ -1,0 +1,320 @@
+---強化選択画面の選択画面のCSSアニメーション---
+.c-bnr.bg {
+  position: relative;
+  overflow: hidden;
+}
+.c-bnr.bg::before,
+.c-bnr.bg::after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  margin: auto;
+  transition: .3s cubic-bezier(0.45, 0, 0.55, 1);
+  opacity: 0;
+}
+.c-bnr.bg::before {
+  background: rgba(190,91,70,.6);
+  width: 100%;
+  height: 100%;
+}
+.c-bnr.bg::after {
+  color: #fff;
+  content: "Read More";
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+}
+ 
+.c-bnr.bg:hover::before,
+.c-bnr.bg:hover::after {
+  opacity: 1;
+}
+https://b-risk.jp/blog/2021/11/hover-reference/
+↑詳しくはこれを参照してクレメンス
+
+---home.html---
+https://www.youtube.com/shorts/j88Kp464SaM
+これつかっておしゃれに
+「復習、理論、構築を一つに集結。」
+「より効率的に。」
+「よりスマートに。」
+とか
+
+宣伝用BGM案
+https://youtu.be/Be0YjRQ9qUo?si=KJ4B1E6x-g4VlJDK
+
+home.htmlバナー動画案
+https://youtu.be/TpeP8Chh0mc?si=xpwhDFjUH-QQkvCV
+または、
+https://www.pexels.com/video/a-neon-light-show-in-the-dark-5680034/
+それか、
+https://www.pexels.com/video/changes-in-form-and-appearance-of-a-submerged-material-3163534/
+
+
+おもろいフォントだからなんか使ってもいいかも
+https://fonts.google.com/specimen/Sixtyfour+Convergence
+
+開発中表示
+https://youtube.com/shorts/WVGf3Qi_zyg?si=AQ5fRg-9cQbhuRco
+
+教科選択画面
+https://uiverse.io/adamgiebl/new-bird-34
+
+承知いたしました。`home.html`でバナーを動画にし、無限ループさせ、明るさを少し落とし、その上にテキストを中央に表示させる方法をご案内いたします。
+
+以下に、具体的な手順とコードを示します。
+
+## **1. 動画をバナーとして設定**
+
+まず、動画ファイルをプロジェクト内の適切なディレクトリに配置します。一般的には、`static`フォルダ内に`videos`フォルダを作成し、その中に動画ファイルを置くと整理しやすいです。
+
+**ディレクトリ構成の例:**
+
+```
+- app.py
+- templates/
+    - home.html
+    - navi_base.html
+- static/
+    - videos/
+        - banner.mp4
+    - css/
+        - styles.css
+```
+
+## **2. `home.html`の編集**
+
+`home.html`に動画バナーとテキストを追加します。動画の上にテキストを重ねるため、HTMLとCSSを組み合わせて実装します。
+
+### **`home.html`のコード:**
+
+```html
+{% extends "navi_base.html" %}
+{% block title %}Home - Tast{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <video autoplay muted loop id="banner-video">
+        <source src="{{ url_for('static', filename='videos/banner.mp4') }}" type="video/mp4">
+        お使いのブラウザは動画タグに対応していません。
+    </video>
+    <div class="banner-text">
+        <h1>ここに表示したいテキスト</h1>
+    </div>
+</div>
+{% endblock %}
+```
+
+- `<div class="banner">`：バナー全体を囲むコンテナです。
+- `<video>`タグ：動画を埋め込むためのタグです。
+    - `autoplay`：ページ読み込み時に自動再生します。
+    - `muted`：音声をミュートします（自動再生時には必要）。
+    - `loop`：動画を無限ループさせます。
+- `<div class="banner-text">`：動画の上に重ねるテキストを配置するためのコンテナです。
+
+## **3. CSSスタイルの追加**
+
+バナーのスタイルやテキストの配置、動画の明るさ調節を行うために、CSSを追加します。
+
+### **`styles.css`のコード:**
+
+```css
+/* バナーの全体スタイル */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* バナーの高さを調整してください */
+    overflow: hidden;
+}
+
+/* 動画のスタイル */
+#banner-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    filter: brightness(50%); /* 明るさを50%に減少 */
+}
+
+/* テキストのスタイル */
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFFFFF; /* テキストの色を白に設定 */
+    text-align: center;
+    z-index: 1;
+}
+
+.banner-text h1 {
+    font-size: 3em; /* テキストサイズを調整 */
+}
+```
+
+- `.banner`：動画とテキストの親コンテナで、`position: relative;`を指定しています。
+- `#banner-video`：動画を中央に配置し、`filter`プロパティで明るさを調整しています。
+- `.banner-text`：動画の上にテキストを中央に重ねるため、`position: absolute;`と`transform`を使用しています。
+- `z-index`：テキストを動画の上に表示するために使用します。
+
+## **4. CSSファイルの読み込み**
+
+`navi_base.html`または`home.html`で、上記のCSSを読み込むようにします。
+
+### **CSSファイルの配置**
+
+`static/css/styles.css`に上記のCSSコードを保存します。
+
+### **`navi_base.html`の修正：**
+
+```html
+<head>
+    <!-- 既存のコード -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='navi_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+```
+
+## **5. Flaskアプリでの静的ファイルの設定**
+
+Flaskはデフォルトで`static`フォルダを静的ファイルのルートとして認識しますので、追加の設定は不要です。ただし、適切なパスを指定するように注意してください。
+
+## **6. 動画ファイルの準備**
+
+- 動画ファイル（例：`banner.mp4`）を`static/videos/`ディレクトリに配置します。
+- 動画のサイズや長さを適切に調整してください。ウェブ上で使用する場合、ファイルサイズが大きいとページの読み込みが遅くなります。可能であれば、動画を最適化して軽量化してください。
+
+## **7. 動画の自動再生とブラウザの互換性**
+
+- 多くのブラウザでは、音声付きの動画の自動再生が制限されています。そのため、`muted`属性を追加し、音声をミュートする必要があります。
+- また、`autoplay`と`loop`属性により、動画が自動再生・無限ループするようになります。
+
+## **8. テキストのデザイン調整**
+
+- テキストのスタイルは、`styles.css`内の`.banner-text`や`.banner-text h1`で調整できます。
+- フォントサイズ、色、影などを変更して、見やすいデザインに仕上げてください。
+
+## **全体のコードまとめ**
+
+### **`home.html`**
+
+```html
+{% extends "navi_base.html" %}
+{% block title %}Home - Tast{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <video autoplay muted loop id="banner-video">
+        <source src="{{ url_for('static', filename='videos/banner.mp4') }}" type="video/mp4">
+        お使いのブラウザは動画タグに対応していません。
+    </video>
+    <div class="banner-text">
+        <h1>ようこそ、Tastへ！</h1>
+    </div>
+</div>
+{% endblock %}
+```
+
+### **`styles.css`**
+
+```css
+/* 全体リセット（必要に応じて追加） */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* バナーの全体スタイル */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* バナーの高さを調整してください */
+    overflow: hidden;
+}
+
+/* 動画のスタイル */
+#banner-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    filter: brightness(50%); /* 明るさを50%に減少 */
+}
+
+/* テキストのスタイル */
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFFFFF; /* テキストの色を白に設定 */
+    text-align: center;
+    z-index: 1;
+}
+
+.banner-text h1 {
+    font-size: 3em; /* テキストサイズを調整 */
+    /* 必要に応じてフォントや影を追加 */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+```
+
+### **`navi_base.html`**
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Navigate Page{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='navi_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- ナビゲーションコンテンツ -->
+        </nav>
+    </header>
+
+    <!-- コンテンツをここに挿入 -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
+```
+
+## **注意点**
+
+- **メディアの許可とライセンス**：使用する動画ファイルの著作権やライセンスに注意してください。フリー素材を使用するか、自身で作成した動画を使用してください。
+- **レスポンシブ対応**：様々なデバイスや画面サイズで適切に表示されるよう、メディアクエリやレスポンシブデザインを検討してください。
+- **パフォーマンス最適化**：動画ファイルのサイズが大きいとページの読み込み速度に影響します。動画を圧縮するか、軽量なアニメーション（例：GIFやCSSアニメーション）を検討してください。
+
+## **動作確認**
+
+1. Flaskアプリケーションを再起動します。
+2. ブラウザで`http://localhost:5000/`（または適切なURL）にアクセスします。
+3. バナー部分に動画が無限ループで再生され、明るさが落ちた状態でテキストが中央に表示されていることを確認します。
+
+---
+
+ご不明な点や追加で調整したい箇所がありましたら、お気軽にお知らせください。

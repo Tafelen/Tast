@@ -1,0 +1,11 @@
+{% extends "navi_base.html" %}
+{% block title %}結果{% endblock %}
+
+{% block content %}
+<h2>クイズ結果</h2>
+<p>出題数：{{correct_num + incorrect_num}}</p>
+<p>正解数: {{ correct_num }}</p>
+<p>不正解数: {{ incorrect_num }}</p>
+
+<a href="{{ url_for('index') }}">もう一度挑戦する</a>
+{% endblock %}
