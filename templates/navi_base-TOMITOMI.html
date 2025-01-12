@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Navigate Page{% endblock %}</title>
+    <link rel="icon" href="Tast_icon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navi_base.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@4.1.1/dist/css/yakuhanjp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='select.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='ai.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='kanji.css')}}">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='404.css')}}"> -->
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>
+                    <a href="{{ url_for('index') }}">
+                        <img src="{{ url_for('static', filename='img/tast_logo.png') }}" class="logo" loading="lazy"
+                            alt="Tastロゴ">
+                    </a>
+                </h1>
+                <ul class="nav-links">
+                    <li><a class="nav-list" href="/">ホーム</a></li>
+                    <li><a class="nav-list" href="/select">教科選択画面</a></li>
+                    <li><a class="nav-list" href="/ask">質問AI</a></li>
+                    <li><a class="nav-list" href="/bulletin">掲示板</a></li>
+                    <li><a class="nav-list" href="/contact">お問い合わせ・バグ報告</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

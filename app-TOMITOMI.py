@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
 import google.generativeai as genai
 from flask_cors import CORS
@@ -12,10 +11,7 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
 # AIの設定
-load_dotenv()
-api_key = os.getenv("API_KEY")
-if not API_KEY:
-    raise ValueError("APIキーが設定されていません。.envファイルを確認してください。")
+api_key = "AIzaSyBWz7iSG8BlvZ9ucynL9N3bQHRgBQuGYhg"
 genai.configure(api_key=api_key)
 safety_settings = [
     {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
@@ -60,21 +56,32 @@ def init_quiz_state():
     session['correct_num'] = 0
     session['incorrect_num'] = 0
     session['kanji_questions'] = {
-        "ゐる": "すわる/連れる",
-    "ぐす": "備わる/備える",
-    "いそぐ": "準備する",
-    "まうく": "用意する",
-    "やる": "行かせる/送る",
-    "おこす": "送ってくる/よこす",
-    "およすく": "成長する",
-    "ねぶ": "おとなびる",
-    "よろし": "適当だ",
-    "わろし": "よくない",
-    "あし": "悪い/へただ",
-    "をかし": "興趣がある",
-    "あはれ": "ああ/しみじみとした情趣",
-    "おもしろし": "趣がある",
-    "はかなし": "頼りない"
+        "心がひかれる": "めづ",
+        "迷う": "まどふ",
+        "はばかる": "つつむ",
+        "ためらう": "やすらふ",
+        "通じる": "こころう",
+        "心が晴れ晴れする/満足する": "心ゆく",
+        "すくいあげる/作る": "むすぶ",
+        "返事をする": "いらふ",
+        "なじむ/慣れる": "ならふ",
+        "まねる": "まねぶ",
+        "取り計らう": "もてなす",
+        "取り計らう": "おきつ",
+        "かこつける": "かこつ",
+        "(何かに)興じる": "すさぶ",
+        "(こしらえ)整える": "てうず",
+        "疲れる": "こうず",
+        "さしつかえる": "さはる",
+        "幼い": "いはけなし",
+        "洗練されている": "らうらうじ",
+        "みっともない": "まさなし",
+        "混雑している": "らうがはし",
+        "仰々しい": "こちたし",
+        "はっきりしている": "しるし",
+        "見(聞き)苦しい": "かたはらいたし",
+        "見苦しくない": "めやすし",
+        "うっとうしい": "いぶせし"
     }
 
 # kanji_question_dict = {
@@ -143,7 +150,7 @@ def ask():
     if request.method == "POST":
         user_question = request.form["user_question"]
         try:
-            model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+            model = genai.GenerativeModel('gemini-2.0-flash-exp')
             response = model.generate_content(user_question)
             generated_text = response.text
         except Exception as e:
@@ -165,6 +172,15 @@ def result():
                         correct_num=session.get('correct_num', 0), 
                         incorrect_num=session.get('incorrect_num', 0))
     
+
+@app.route('/bulletin')
+def bulletin():
+    return render_template('404.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('404.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
 # , host="10.75.163.249", port=80

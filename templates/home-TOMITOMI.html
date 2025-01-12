@@ -1,0 +1,18 @@
+{% extends "navi_base.html" %}
+{% block title %} home- Tast{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <video autoplay muted loop id="banner-video">
+        <source src="{{url_for('static', filename='videos/banner.mp4') }}" type="video/mp4">
+        君が使っているブラウザは動画タグに対応してないみたい…残念！乙！
+    </video>
+    <div class="banner-text">
+        <h1>学校の復習をよりスマートに、より効率的に。</h1>
+    </div>
+    <div class="home_txt1">
+        <h1>復習、探求、共有の機能が一つに。</h1>
+    </div>
+</div>
+
+{% endblock %}
