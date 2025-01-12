@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
 import google.generativeai as genai
@@ -13,10 +14,10 @@ app.secret_key = secrets.token_hex(32)
 
 # AIの設定
 load_dotenv()
-api_key = os.getenv("API_KEY")
+API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     raise ValueError("APIキーが設定されていません。.envファイルを確認してください。")
-genai.configure(api_key=api_key)
+genai.configure(api_key=API_KEY)
 safety_settings = [
     {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
     {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
