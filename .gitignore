@@ -28,3 +28,6 @@ node_modules/
 
 # コメント: 特定のファイルを除外対象から外す
 !important.log
+
+# PAT
+project_explain_memo.txt

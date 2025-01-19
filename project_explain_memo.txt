@@ -6,3 +6,6 @@
 ④その結果があっていたかどうかをラジオボタン(オプション：正解、不正解の二択)
 ⑤次へを選択
 ⑥次へを選択されると、正解の場合→ correct += 1 不正解の場合→incorrect += 1
+
+PAT
+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
