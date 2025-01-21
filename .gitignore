@@ -26,5 +26,5 @@ node_modules/
 # コメント: 環境変数ファイル (機密情報を含む可能性がある)
 .env
 
-# PAT
-project_explain_memo.txt
+*.txt
+!requirements.txt
