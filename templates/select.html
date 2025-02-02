@@ -6,7 +6,43 @@
 <br><h1 class="kokugo">国語</h1><br>
 <form action="{{ url_for('kanji') }}">
     <button id="kanji" class="cssbuttons-io-button">
-        漢字ボックス期末範囲
+        漢字ボックス期末範囲第一回
+        <div class="icon">
+            <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                    fill="currentColor"></path>
+            </svg>
+        </div>
+    </button>
+</form>
+<br>
+<form action="{{ url_for('kanji2') }}">
+    <button id="kanji" class="cssbuttons-io-button">
+        漢字ボックス期末範囲第二回
+        <div class="icon">
+            <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                    fill="currentColor"></path>
+            </svg>
+        </div>
+    </button>
+</form>
+<br>
+<form action="{{ url_for('kanji3') }}">
+    <button id="kanji" class="cssbuttons-io-button">
+        漢字ボックス期末範囲第三回
         <div class="icon">
             <svg
                 height="24"
@@ -38,5 +74,23 @@
         </svg>
     </div>
 </button>
-
+<br>
+<h1 class="test">実行テスト用問題集(3問)</h1>
+<br>
+<form action="{{ url_for('test') }}">
+    <button id="test" class="cssbuttons-io-button">
+        テスト
+        <div class="icon">
+            <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                    fill="currentColor"></path>
+            </svg>
+        </div>
+    </button>
 {% endblock %}
