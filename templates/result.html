@@ -7,6 +7,89 @@
 <p>正解数: {{ correct_num }}</p>
 <p>不正解数: {{ incorrect_num }}</p>
 
+<style>
+   * {
+  font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}
 
+    #resultChart {
+    max-width: 500px;
+    max-height: 500px;
+    display: block;
+    margin: auto;
+}
+
+</style>
+
+<canvas id="resultChart" width="400" height="400"></canvas>
+
+<!-- Chart.js の CDN を読み込む -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div id="quiz-result" data-correct="{{ correct_num }}"
+    data-incorrect="{{ incorrect_num }}"></div>
+<script>
+    // Flask から渡されたデータを JavaScript の変数に代入
+    const quizResult = document.getElementById("quiz-result");
+    const correctNum = parseInt(quizResult.dataset.correct, 10);
+    const incorrectNum = parseInt(quizResult.dataset.incorrect, 10);
+
+    
+    // 円グラフ（パイチャート）のデータ設定
+    const data = {
+        labels: ['正解', '不正解'],
+        datasets: [{
+            data: [correctNum, incorrectNum],
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.7)', // 正解の色
+                'rgba(255, 99, 132, 0.7)'  // 不正解の色
+            ],
+            borderColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // 円グラフのオプション設定（アニメーションはデフォルト有効）
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'クイズ結果'
+            }
+        }
+    };
+
+    // Chart.js で円グラフを生成
+    const ctx = document.getElementById('resultChart').getContext('2d');
+    const resultChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['正解', '不正解'],
+        datasets: [{
+            data: [correctNum, incorrectNum],
+            backgroundColor: ['#A8DADC', '#FFB6B9']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,  // アスペクト比を固定しない
+        animation: {
+            duration: 2000,  // アニメーション時間（2秒）
+            easing: 'easeInOutCirc' // アニメーションのイージング（変更可能）
+        },
+        layout: {
+            padding: 20  // グラフの周囲に余白を追加
+        }
+    }
+});
+</script>
 <a href="{{ url_for('index') }}">もう一度挑戦する</a>
 {% endblock %}
