@@ -90,6 +90,92 @@ kanji_question3 = {
     "アテサキ不明で戻ってきた。": "宛先",
 }
 
+kanji_question4 = {
+    "鉛筆のシンの材料を調べる。": "芯",
+    "カセイに苦しむ国民。": "苛政",
+    "手足の筋肉がイシュクする。": "萎縮",
+    "気持ちがナえる。": "萎",
+    "心のカットウを描いた文学。": "葛藤",
+    "ズガイコツに入ったひび。": "頭蓋骨",
+    "戦いのヒブタが切られる。": "火蓋",
+    "サゲスむような視線。": "蔑",
+    "ケイベツに値する行為だ。": "軽蔑",
+    "証拠のインペイを図る。": "隠蔽",
+    "フジの花が咲く。": "藤",
+    "アイイロに染められた布。": "藍色",
+    "見事なサイハイだった。": "采配",
+    "壁画が発見されたドウクツ。": "洞窟",
+    "聴衆からバセイが飛ぶ。": "罵声",
+    "医師からショホウセンをもらう。": "処方箋",
+    "サイバシは「箸」と数えない。": "菜箸",
+    "窓辺にトリカゴをつるす。": "鳥籠",
+    "コケツに入るような危険を冒す。": "虎穴",
+    "センチャの入れ方にこだわる。": "煎茶",
+    "波にホンロウされる小舟。": "翻弄",
+    "エンコンによる犯行。": "怨恨",
+    "死者のオンネンを晴らす。": "怨念",
+    "シイ的な判断にすぎない。": "恣意",
+    "何とかコンセキをとどめる。": "痕跡",
+    "ヤせた土地でもよく育つ。": "痩",
+}
+
+kanji_question5 = {
+    "胃にカイヨウができたようだ。": "潰瘍",
+    "メジリにしわを寄せて笑う。": "目尻",
+    "鮎が川をソジョウする。": "遡上",
+    "十年前まで記憶をサカノボる。": "遡",
+    "ケンソンして何も言わない。": "謙遜",
+    "小麦粉を使ったメンルイ。": "麺類",
+    "コウバイの急な坂をのぼる。": "勾配",
+    "生活のニオいを感じない。": "匂",
+    "山はクラヤミに包まれていた。": "暗闇",
+    "団子のクシザしを頑張る。": "串刺",
+    "テンドンを二人前注文する。": "天丼",
+    "イノチゴいを聞き入れる。": "命乞",
+    "ひとフロ浴びる。": "風呂",
+    "自然のヨウサイに囲まれた地。": "要塞",
+    "ヘイソク状況を打破する。": "閉塞",
+    "自然に囲まれてソウカイだ。": "爽快",
+    "ダンガイ絶壁の上に立つ。": "断崖",
+    "ガケ崩れの対策を行う。": "崖",
+    "スナアラシの中から救出する。": "砂嵐",
+    "掃除はゾウキンがけが一番。": "雑巾",
+    "ゴイの豊富な人。": "語彙",
+    "ケンポウを護身用に習う。": "拳法",
+    "シンシな態度に好感をもつ。": "真摯",
+    "赤いハンテンが見られる。": "斑点",
+    "一年の計はガンタンにあり。": "元旦",
+    "ソウゾフの代から営む。": "曽祖父"
+}
+
+kanji_question6 = {
+    "富士サンロクの自然を撮る。": "山麓",
+    "台風が残した大きなツメアト。": "爪痕",
+    "ツマサキをそろえて立つ" : "爪先",
+    "昔から珍重されたゾウゲ。": "象牙",
+    "カンペキな演技を見せた選手。": "完璧",
+    "汚職事件で政権がガカイする。": "瓦解",
+    "赤いカワラの屋根が並ぶ。": "瓦",
+    "自然へのイケイの念を抱く。": "畏敬",
+    "キンキ地方の拠点となる。": "近畿",
+    "ミケンのしわ。": "眉間",
+    "不快そうにマユネを寄せる。": "眉根",
+    "セキズイ損傷と診断される。": "脊髄",
+    "ジンゾウを摘出する手術。": "腎臓",
+    "シュウチ心に見舞われる。": "羞恥",
+    "人もウラヤむ夫婦仲だ。": "羨",
+    "センボウのまなざし。": "羨望",
+    "肌のイロツヤがよい。": "色艶",
+    "ハチミツは栄養価が高い。": "蜂蜜",
+    "ダッキュウ予防のトレーニング。": "脱臼",
+    "ドンヨクに知識を吸収する。": "貪欲",
+    "批評はシンラツをきわめた。": "辛辣",
+    "チャガマは茶道具の一種だ。": "茶釜",
+    "今後を考えるとユウウツだ。": "憂鬱",
+    "カンコクゴを流ちょうに話す。": "韓国語",
+    "願いをこめセンバヅルを折る。": "千羽鶴",
+    "二人の間にキレツが入る": "亀裂"
+}
 
 @app.route("/")
 def index():
@@ -145,13 +231,6 @@ def init_quiz_state():
     "シブガキを干して食用にする": "渋柿",
 }
 
-# kanji_question_dict = {
-#     "彼女は音楽を「きく」": "彼女は音楽を聴く",
-#     "試合の「けっか」を待つ": "試合の結果を待つ",
-#     "交通事故を「ふせぐ」": "交通事故を防ぐ",
-#     "「たいりょく」が不足している": "体力が不足している",
-#     "新しい「じだい」に生きる": "新しい時代に生きる"
-#     }
 
 @app.route('/kanji2')
 def kanji2():
@@ -182,7 +261,7 @@ def kanji3():
     session.clear()
     if not session.get('initialized'):
         init_quiz_state3()
-    return redirect(url_for('kanji_check', quiz_type='kanji2'))
+    return redirect(url_for('kanji_check', quiz_type='kanji3'))
 
 def init_quiz_state3():
     """クイズの状態を初期化する関数"""
@@ -190,7 +269,66 @@ def init_quiz_state3():
     session['question_num'] = 1
     session['correct_num'] = 0
     session['incorrect_num'] = 0
-    session['kanji_questions'] = kanji_question2.copy()
+    session['kanji_questions'] = kanji_question3.copy()
+    
+@app.route('/kanji4')
+def kanji4():
+    global question_num, correct_num, incorrect_num
+    question_num = 1
+    correct_num = 0
+    incorrect_num = 0
+    session.clear()
+    if not session.get('initialized'):
+        init_quiz_state4()
+    return redirect(url_for('kanji_check', quiz_type='kanji4'))
+
+def init_quiz_state4():
+    """クイズの状態を初期化する関数"""
+    session['initialized'] = True
+    session['question_num'] = 1
+    session['correct_num'] = 0
+    session['incorrect_num'] = 0
+    session['kanji_questions'] = kanji_question4.copy()
+    
+
+@app.route('/kanji5')
+def kanji5():
+    global question_num, correct_num, incorrect_num
+    question_num = 1
+    correct_num = 0
+    incorrect_num = 0
+    session.clear()
+    if not session.get('initialized'):
+        init_quiz_state5()
+    return redirect(url_for('kanji_check', quiz_type='kanji5'))
+
+def init_quiz_state5():
+    """クイズの状態を初期化する関数"""
+    session['initialized'] = True
+    session['question_num'] = 1
+    session['correct_num'] = 0
+    session['incorrect_num'] = 0
+    session['kanji_questions'] = kanji_question5.copy()
+    
+@app.route('/kanji6')
+def kanji6():
+    global question_num, correct_num, incorrect_num
+    question_num = 1
+    correct_num = 0
+    incorrect_num = 0
+    session.clear()
+    if not session.get('initialized'):
+        init_quiz_state6()
+    return redirect(url_for('kanji_check', quiz_type='kanji6'))
+
+def init_quiz_state6():
+    """クイズの状態を初期化する関数"""
+    session['initialized'] = True
+    session['question_num'] = 1
+    session['correct_num'] = 0
+    session['incorrect_num'] = 0
+    session['kanji_questions'] = kanji_question6.copy()
+
 
 @app.route('/test')
 def test():
@@ -206,6 +344,12 @@ def kanji_check():
         return redirect(url_for('kanji2'))
     elif quiz_type == 'kanji3' and not session.get('initialized'):
         return redirect(url_for('kanji3'))
+    elif quiz_type == 'kanji4' and not session.get('initialized'):
+        return redirect(url_for('kanji4'))
+    elif quiz_type == 'kanji5' and not session.get('initialized'):
+        return redirect(url_for('kanji5'))
+    elif quiz_type == 'kanji6' and not session.get('initialized'):
+        return redirect(url_for('kanji6'))
     if 'question_num' not in session:
         if quiz_type == 'kanji':
             return redirect(url_for('kanji'))
@@ -213,6 +357,12 @@ def kanji_check():
             return redirect(url_for('kanji2'))
         elif quiz_type == 'kanji3':
             return redirect(url_for('kanji3'))
+        elif quiz_type == 'kanji4':
+            return redirect(url_for('kanji4'))
+        elif quiz_type == 'kanji5':
+            return redirect(url_for('kanji5'))
+        elif quiz_type == 'kanji6':
+            return redirect(url_for('kanji6'))
     if request.method == 'POST':
         action = request.form.get('action')
 
