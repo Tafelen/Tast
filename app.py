@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import google.generativeai as genai
 from flask_cors import CORS
 import markdown
@@ -31,6 +31,10 @@ generation_config = {
     'top_p': 0.9,
     'max_output_tokens': 1500
 }
+
+@app.route('/favicon.ico')
+def favicon():
+    return app.send_static_file('favicon32.ico')
 
 kanji_question2 = {
     "剣道のケイコに励む日々。": "稽古",
