@@ -36,6 +36,7 @@ generation_config = {
 def favicon():
     return app.send_static_file('favicon32.ico')
 
+# 単語セット
 kanji_question2 = {
     "剣道のケイコに励む日々。": "稽古",
     "ハンソデのシャツを羽織る。": "半袖",
@@ -416,7 +417,7 @@ def ask():
     if request.method == "POST":
         user_question = request.form["user_question"]
         try:
-            model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+            model = genai.GenerativeModel('models/gemini-2.0-flash')
             response = model.generate_content(user_question)
             generated_text = response.text
         except Exception as e:
